@@ -3,7 +3,7 @@
 -record(mydoc, {recindex = 1, docid, name, i, address, tags}).
 -record(address, {recindex = 2, docid, street, city, country}).
 % metadata is an embedded document,
--record(gfs_file, {recindex = 3, docid, filename, contentType, length, chunkSize, uploadDate, aliases, metadata, md5}).
+-record(gfs_file, {recindex = 3, docid, filename, contentType, length, chunkSize, uploadDate, aliases, metadata, md5, uuid, sha1}).
 -record(gfs_chunk, {recindex = 4, docid, files_id, n, data}).
 % A table of records used with mongodb (tuple of record fields).
 % If you arent using an embedded record, you can use record_info(fields, name_of_record)

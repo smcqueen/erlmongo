@@ -515,6 +515,10 @@ gfsNew(<<_/binary>> = Collection, Filename, Opts) ->
 															  docid = {oid,mongodb:create_id()}, uploadDate = now()},
 	 										 collection = name(Collection), coll_name = Collection, db = DB, mode = write})).
 
+gfsopts([{sha1, Sha1}|T], S) ->
+    gfsopts(T, S#gfs_state{file = (S#gfs_state.file)#gfs_file{sha1 = Sha1}});
+gfsopts([{uuid, Uuid}|T], S) ->
+    gfsopts(T, S#gfs_state{file = (S#gfs_state.file)#gfs_file{uuid = Uuid}});
 gfsopts([{meta, Rec}|T], S) ->
 	gfsopts(T, S#gfs_state{file = (S#gfs_state.file)#gfs_file{metadata = Rec}});
 gfsopts([{aliases, L}|T], S) ->
